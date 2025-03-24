@@ -9,7 +9,7 @@ import json
 app = FastAPI()
 
 # Get HF Token from environment variable
-HF_TOKEN = os.getenv("HF_TOKEN")
+HF_TOKEN = "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"
 if not HF_TOKEN:
     raise RuntimeError("Hugging Face token not found! Set HF_TOKEN as an environment variable.")
 
@@ -77,3 +77,6 @@ async def analyze_text(request: TextRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 # Run locally: uvicorn main:app --reload
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)    
